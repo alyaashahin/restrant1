@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">The Golden Plate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="item.css">
+    
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">The Golden Plate</a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+        <button class="icon-btn cart-toggle" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count"></span>
+        </button>
+        <button class="mobile-menu-btn icon-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+</nav>
+
+<main>
+    <div class="detail-layout">
+        <a href="menu.html" class="detail-back"><i class="fa-solid fa-arrow-left"></i> Back to Menu</a>
+        <div class="detail-gallery" id="detailGallery"></div>
+        <div class="detail-body">
+            <div class="detail-info">
+                <h1 id="detailName"></h1>
+                <span class="detail-cat" id="detailCat"></span>
+                <p class="detail-desc" id="detailDesc"></p>
+                <div class="detail-section">
+                    <h3><i class="fa-solid fa-list-check"></i> Ingredients</h3>
+                    <div class="ingredient-list" id="detailIngredients"></div>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Allergens</h3>
+                    <div class="allergen-list" id="detailAllergens"></div>
+                </div>
+                <div class="detail-reviews">
+                    <h3>Reviews <span id="detailReviewCount" style="color:var(--text-muted);font-size:0.85rem"></span></h3>
+                    <div id="detailReviews"></div>
+                    <p style="margin-top:1rem"><span class="write-review-link" onclick="document.getElementById('reviewForm').style.display='block';this.style.display='none'">Write a review</span></p>
+                </div>
+            </div>
+            <div class="detail-sidebar">
+                <div class="detail-price-card">
+                    <div class="detail-price-range" id="detailPriceRange"></div>
+                    <div class="detail-price" id="detailPrice"></div>
+                    <button class="detail-add-btn" id="detailAddBtn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Form -->
+        <div id="reviewForm" style="display:none;margin-top:2rem;padding:2rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px">
+            <h3 style="font-family:'Playfair Display',serif;margin-bottom:1rem">Write a Review</h3>
+            <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+                <div><label style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.3rem">Your Name</label><input type="text" id="reviewName" placeholder="Your name" style="width:100%;background:var(--input-bg);border:1px solid var(--card-border);border-radius:8px;color:var(--text);padding:0.7rem 0.9rem;font-family:inherit;font-size:0.88rem;outline:none"></div>
+                <div><label style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.3rem">Rating</label><select id="reviewRating" style="width:100%;background:var(--input-bg);border:1px solid var(--card-border);border-radius:8px;color:var(--text);padding:0.7rem 0.9rem;font-family:inherit;font-size:0.88rem;outline:none"><option value="5">★★★★★ Excellent</option><option value="4">★★★★ Very Good</option><option value="3">★★★ Good</option><option value="2">★★ Fair</option><option value="1">★ Poor</option></select></div>
+            </div>
+            <div style="margin-bottom:1rem"><label style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.3rem">Your Review</label><textarea id="reviewText" rows="4" placeholder="Tell us about your experience..." style="width:100%;background:var(--input-bg);border:1px solid var(--card-border);border-radius:8px;color:var(--text);padding:0.7rem 0.9rem;font-family:inherit;font-size:0.88rem;outline:none;resize:vertical;line-height:1.6"></textarea></div>
+            <button onclick="submitReview()" style="background:var(--btn-bg);color:var(--btn-text);border:none;padding:0.7rem 1.5rem;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Submit Review</button>
+            <button onclick="document.getElementById('reviewForm').style.display='none';document.querySelector('.write-review-link').style.display=''" style="background:transparent;color:var(--text-muted);border:1px solid var(--card-border);padding:0.7rem 1.5rem;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;margin-left:0.5rem">Cancel</button>
+        </div>
+    </div>
+</main>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <h2><i class="fa-solid fa-bag-shopping"></i> Your Selection</h2>
+        <button class="icon-btn close-cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+        <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+        <button class="checkout-btn" id="checkoutBtn">Order via WhatsApp</button>
+    </div>
+</aside>
+
+<footer>
+    <div class="footer-logo">The Golden Plate</div>
+    <div class="footer-tagline">Crafted for the discerning palate.</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a><a href="menu.html">Menu</a>
+        <a href="about.html">Our Story</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="socials" id="footerSocials"></div>
+    <p class="copy">&copy; <span class="year"></span> The Golden Plate. All rights reserved.</p>
+</footer>
+
+<script src="gp-data.js"></script>
+<script src="main.js"></script>
+<script src="item.js"></script>
+
+</body>
+</html>

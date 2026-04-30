@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Plate | Fine Dining Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">The Golden Plate</a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+        <button class="icon-btn cart-toggle" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count"></span>
+        </button>
+        <button class="mobile-menu-btn icon-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+</nav>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badges animate">
+                <div class="hero-badge"><i class="fa-solid fa-star"></i> 3× Culinary Award Winner</div>
+                <div class="hero-badge"><i class="fa-solid fa-leaf"></i> Locally Sourced Ingredients</div>
+                <div class="hero-badge"><i class="fa-solid fa-wine-glass"></i> Curated Wine Selection</div>
+            </div>
+            <h1 id="heroHeading">Where <span id="heroSpan">Flavor</span> Meets Elegance</h1>
+            <p id="heroDesc">An exquisite culinary journey crafted with passion, precision, and the finest ingredients. Taste the artistry in every bite.</p>
+            <a href="menu.html" class="btn-primary" id="heroBtnEl">Explore the Menu</a>
+            <div class="scroll-hint"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section section-bg">
+        <div class="section-header animate">
+            <span class="section-tag">Why Choose Us</span>
+            <h2>An Unrivalled Experience</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card animate"><div class="feature-icon"><i class="fa-solid fa-award"></i></div><h3>Award-Winning Cuisine</h3><p>Recognized three times for culinary excellence, our dishes are crafted to impress even the most discerning palate.</p></div>
+            <div class="feature-card animate" style="transition-delay:0.1s"><div class="feature-icon"><i class="fa-solid fa-seedling"></i></div><h3>Farm-to-Table</h3><p>We partner with local farms and artisanal suppliers to bring you the freshest, most sustainable ingredients every day.</p></div>
+            <div class="feature-card animate" style="transition-delay:0.2s"><div class="feature-icon"><i class="fa-solid fa-champagne-glasses"></i></div><h3>Curated Pairings</h3><p>Our head sommelier personally selects wines and cocktails to complement every dish on our ever-evolving menu.</p></div>
+            <div class="feature-card animate" style="transition-delay:0.3s"><div class="feature-icon"><i class="fa-solid fa-utensils"></i></div><h3>Private Dining</h3><p>Host intimate gatherings or celebrations in our exclusive private dining rooms, tailored to your vision.</p></div>
+        </div>
+    </section>
+
+    <!-- MENU PREVIEW -->
+    <section class="section">
+        <div class="section-header animate">
+            <span class="section-tag">Curated Selections</span>
+            <h2>A Taste of Our Menu</h2>
+            <div class="divider-gold"></div>
+            <p>Each dish tells a story of tradition, innovation, and uncompromising quality.</p>
+        </div>
+        <div class="preview-grid" id="previewGrid"></div>
+        <div style="text-align:center;margin-top:3rem">
+            <a href="menu.html" class="btn-outline animate">View Full Menu <i class="fa-solid fa-arrow-right" style="margin-left:0.4rem"></i></a>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section section-bg">
+        <div class="section-header animate">
+            <span class="section-tag">Guest Stories</span>
+            <h2>What Our Guests Say</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="reviews-grid" id="reviewsGrid"></div>
+        <div style="text-align:center;margin-top:2rem">
+            <button class="btn-outline animate" onclick="document.getElementById('reviewSection').scrollIntoView({behavior:'smooth'})">Write a Review <i class="fa-solid fa-pen" style="margin-left:0.4rem"></i></button>
+        </div>
+    </section>
+
+    <!-- REVIEW FORM SECTION -->
+    <section class="section" id="reviewSection">
+        <div style="max-width:600px;margin:0 auto">
+            <div class="section-header animate">
+                <span class="section-tag">Share Your Experience</span>
+                <h2>Write a Review</h2>
+                <div class="divider-gold"></div>
+            </div>
+            <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem">
+                <div style="margin-bottom:1rem">
+                    <label style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.3rem">Your Name</label>
+                    <input type="text" id="homeReviewName" placeholder="Your name" style="width:100%;background:var(--input-bg);border:1px solid var(--card-border);border-radius:8px;color:var(--text);padding:0.7rem 0.9rem;font-family:inherit;font-size:0.88rem;outline:none">
+                </div>
+                <div style="margin-bottom:1rem">
+                    <label style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.3rem">Rating</label>
+                    <select id="homeReviewRating" style="width:100%;background:var(--input-bg);border:1px solid var(--card-border);border-radius:8px;color:var(--text);padding:0.7rem 0.9rem;font-family:inherit;font-size:0.88rem;outline:none">
+                        <option value="5">★★★★★ Excellent</option>
+                        <option value="4">★★★★ Very Good</option>
+                        <option value="3">★★★ Good</option>
+                        <option value="2">★★ Fair</option>
+                        <option value="1">★ Poor</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:1rem">
+                    <label style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:0.3rem">Your Review</label>
+                    <textarea id="homeReviewText" rows="4" placeholder="Tell us about your experience..." style="width:100%;background:var(--input-bg);border:1px solid var(--card-border);border-radius:8px;color:var(--text);padding:0.7rem 0.9rem;font-family:inherit;font-size:0.88rem;outline:none;resize:vertical;line-height:1.6"></textarea>
+                </div>
+                <button onclick="submitHomeReview()" style="width:100%;padding:0.9rem;background:var(--btn-bg);color:var(--btn-text);border:none;border-radius:10px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit">Submit Review</button>
+                <div id="homeReviewSuccess" style="display:none;text-align:center;margin-top:1rem;padding:0.9rem;background:rgba(34,197,94,0.08);border:1px solid #22c55e;color:#22c55e;border-radius:8px;font-size:0.85rem">Thank you! Your review will appear after admin approval.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-box animate">
+            <h2>Ready to Taste the Journey?</h2>
+            <p>Step into our world. Reserve a table, explore our seasonal menu, or simply experience the art of dining reimagined.</p>
+            <div class="cta-btns">
+                <a href="menu.html" class="btn-primary">Explore the Menu</a>
+                <a href="contact.html" class="btn-outline">Make a Reservation</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <h2><i class="fa-solid fa-bag-shopping"></i> Your Selection</h2>
+        <button class="icon-btn close-cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+        <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+        <button class="checkout-btn" id="checkoutBtn">Order via WhatsApp</button>
+    </div>
+</aside>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">The Golden Plate</div>
+    <div class="footer-tagline">Crafted for the discerning palate.</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="socials" id="footerSocials"></div>
+    <p class="copy">&copy; <span class="year"></span> <span class="footer-logo-inline">The Golden Plate</span>. All rights reserved.</p>
+</footer>
+
+<script src="gp-data.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | The Golden Plate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">The Golden Plate</a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html" class="active">Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+        <button class="icon-btn cart-toggle" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count"></span>
+        </button>
+        <button class="mobile-menu-btn icon-btn" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="hero hero-sm">
+        <div class="hero-content">
+            <h1 id="aboutTitle">A Legacy of Flavor, <span>Crafted with Soul</span></h1>
+            <p>Where tradition meets innovation, and every plate tells a story of passion, precision, and purpose.</p>
+        </div>
+    </section>
+
+    <!-- ORIGIN -->
+    <section class="section">
+        <div class="narrow animate">
+            <span class="section-tag" style="display:block;margin-bottom:0.6rem">The Beginning</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,2.8vw,2.2rem);margin-bottom:0.8rem">
+                From a Modest Kitchen to a Culinary Sanctuary
+            </h2>
+            <div class="divider-gold" style="margin:1rem 0"></div>
+            <p class="lead" id="aboutStory">
+                Founded in 2018, The Golden Plate was born from a simple belief: that food is more than sustenance — it is memory, identity, and art.
+            </p>
+            <p class="lead2" id="aboutStory2">
+                Our founder, inspired by decades of travel across Mediterranean and Asian culinary heartlands, gathered a team of artisans who share one vision — to craft meals that transcend expectation.
+            </p>
+            <div class="origin-grid">
+                <div class="origin-img">
+                    <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&w=600" alt="Kitchen" loading="lazy">
+                </div>
+                <div class="origin-img">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop" alt="Dining" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section">
+        <div class="section-header animate">
+            <span class="section-tag">Our Journey</span>
+            <h2>Milestones That Shaped Us</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="timeline-wrap">
+            <div class="tl-item animate">
+                <div class="tl-year" id="tl1Year">2018</div>
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                    <h3>The First Flame</h3>
+                    <p>Opened our doors with a 12-seat kitchen and a menu of 6 signature dishes.</p>
+                </div>
+            </div>
+            <div class="tl-item animate">
+                <div class="tl-year">2020</div>
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                    <h3>Expanded Horizons</h3>
+                    <p>Moved to our flagship location, doubling capacity and adding a private dining wing.</p>
+                </div>
+            </div>
+            <div class="tl-item animate">
+                <div class="tl-year">2023</div>
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                    <h3>Recognized Excellence</h3>
+                    <p>Awarded "Best New Fine Dining" and featured in Culinary Monthly magazine.</p>
+                </div>
+            </div>
+            <div class="tl-item animate">
+                <div class="tl-year">2026</div>
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                    <h3>Digital & Global Reach</h3>
+                    <p>Launched premium online ordering, bringing the golden experience to your doorstep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-band animate">
+        <div class="stats-grid">
+            <div>
+                <span class="stat-val" id="statYears">0</span><span class="stat-suf">+</span>
+                <p class="stat-lbl">Years of Craft</p>
+            </div>
+            <div>
+                <span class="stat-val" id="statGuests">0</span><span class="stat-suf">K</span>
+                <p class="stat-lbl">Guests Served</p>
+            </div>
+            <div>
+                <span class="stat-val" id="statAwards">0</span>
+                <p class="stat-lbl">Culinary Awards</p>
+            </div>
+            <div>
+                <span class="stat-val" id="statSat">0</span><span class="stat-suf">%</span>
+                <p class="stat-lbl">Guest Satisfaction</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section">
+        <div class="section-header animate">
+            <span class="section-tag">The Hands Behind the Magic</span>
+            <h2>Meet Our Artisans</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="team-grid" id="teamGrid"></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div class="section-header animate">
+            <span class="section-tag">The Atmosphere</span>
+            <h2>Step Into Our World</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gal-item animate">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600" alt="Interior" loading="lazy">
+            </div>
+            <div class="gal-item animate" style="transition-delay:0.1s">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600" alt="Table" loading="lazy">
+            </div>
+            <div class="gal-item animate" style="transition-delay:0.2s">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600" alt="Food" loading="lazy">
+            </div>
+            <div class="gal-item animate" style="transition-delay:0.3s">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=600" alt="Bar" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-bottom:6rem">
+        <div class="cta-box animate">
+            <h2>Ready to Taste the Journey?</h2>
+            <p>Step into our world. Reserve a table, explore our seasonal menu, or simply experience the art of dining reimagined.</p>
+            <div class="cta-btns">
+                <a href="menu.html" class="btn-primary">Explore the Menu</a>
+                <a href="contact.html" class="btn-outline">Make a Reservation</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== CART ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <h2><i class="fa-solid fa-bag-shopping"></i> Your Selection</h2>
+        <button class="icon-btn close-cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total</span>
+            <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Order via WhatsApp</button>
+    </div>
+</aside>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-logo">The Golden Plate</div>
+    <div class="footer-tagline">Crafted for the discerning palate.</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="socials" id="footerSocials"></div>
+    <p class="copy">&copy; <span class="year"></span> The Golden Plate. All rights reserved.</p>
+</footer>
+
+<script src="gp-data.js"></script>
+<script src="main.js"></script>
+<script src="about.js"></script>
+
+</body>
+</html>

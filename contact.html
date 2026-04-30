@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | The Golden Plate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">The Golden Plate</a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Story</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-actions">
+        <button class="icon-btn cart-toggle" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count"></span>
+        </button>
+        <button class="mobile-menu-btn icon-btn" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="hero hero-sm">
+        <div class="hero-content">
+            <h1>Get in <span>Touch</span></h1>
+            <p>Reserve a table, ask a question, or simply say hello — we'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT LAYOUT -->
+    <div class="contact-layout">
+
+        <!-- INFO CARDS -->
+        <div class="info-cards animate">
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                    <h3>Our Address</h3>
+                    <p id="contactAddress">123 Golden Avenue, Luxury District, New York, NY 10001</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                    <h3>Phone</h3>
+                    <a href="#" id="contactPhoneLink">+1 (212) 555-0199</a>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                    <h3>Email</h3>
+                    <a href="#" id="contactEmailLink">reservations@goldenplate.com</a>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div>
+                    <h3>WhatsApp Orders</h3>
+                    <a href="#" id="contactWaLink">Message us to place an order</a>
+                </div>
+            </div>
+
+            <!-- Opening Hours -->
+            <div>
+                <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.7rem">
+                    Opening Hours
+                </p>
+                <div class="hours-grid">
+                    <div class="hours-item">
+                        <div class="hours-label">Weekdays</div>
+                        <div class="hours-val" id="hoursWeek">Mon–Fri: 12:00 PM – 11:00 PM</div>
+                    </div>
+                    <div class="hours-item">
+                        <div class="hours-label">Weekend</div>
+                        <div class="hours-val" id="hoursWeekend">Sat–Sun: 11:00 AM – 12:00 AM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESERVATION FORM -->
+        <div class="contact-form animate">
+            <div class="form-title">Make a Reservation</div>
+            <form id="reservationForm" onsubmit="submitForm(event)">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="James" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Mitchell" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" placeholder="+1 (555) 000-0000">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" required id="resDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <select required>
+                            <option value="">Select time</option>
+                            <option>12:00 PM</option>
+                            <option>12:30 PM</option>
+                            <option>1:00 PM</option>
+                            <option>1:30 PM</option>
+                            <option>6:00 PM</option>
+                            <option>6:30 PM</option>
+                            <option>7:00 PM</option>
+                            <option>7:30 PM</option>
+                            <option>8:00 PM</option>
+                            <option>8:30 PM</option>
+                            <option>9:00 PM</option>
+                            <option>9:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Guests</label>
+                    <select required>
+                        <option>1 Guest</option>
+                        <option selected>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4 Guests</option>
+                        <option>5 Guests</option>
+                        <option>6 Guests</option>
+                        <option>7+ Guests (please specify in notes)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Special Requests</label>
+                    <textarea placeholder="Dietary restrictions, occasion, seating preference..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Confirm Reservation <i class="fa-solid fa-arrow-right" style="margin-left:0.4rem"></i>
+                </button>
+
+                <div class="form-success" id="formSuccess">
+                    <i class="fa-solid fa-check-circle"></i> Reservation confirmed! We'll be in touch shortly.
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- MAP -->
+    <div class="map-section animate">
+        <div class="map-wrap">
+            <iframe id="mapFrame"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304603!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1734567890123"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-overlay-label">
+                <i class="fa-solid fa-location-dot"></i> The Golden Plate
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- ===== CART ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <h2><i class="fa-solid fa-bag-shopping"></i> Your Selection</h2>
+        <button class="icon-btn close-cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total</span>
+            <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Order via WhatsApp</button>
+    </div>
+</aside>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-logo">The Golden Plate</div>
+    <div class="footer-tagline">Crafted for the discerning palate.</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="socials" id="footerSocials"></div>
+    <p class="copy">&copy; <span class="year"></span> The Golden Plate. All rights reserved.</p>
+</footer>
+
+<script src="gp-data.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

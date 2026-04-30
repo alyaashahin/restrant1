@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | The Golden Plate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="menu.css">
+    
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">The Golden Plate</a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="about.html">Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+        <button class="icon-btn cart-toggle" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count"></span>
+        </button>
+        <button class="mobile-menu-btn icon-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+</nav>
+
+<main>
+    <section class="hero hero-sm">
+        <div class="hero-content">
+            <h1>Our <span>Exquisite</span> Menu</h1>
+            <p>Discover a symphony of flavors, carefully crafted to elevate your dining experience.</p>
+        </div>
+    </section>
+
+    <div class="menu-layout">
+        <aside class="cat-nav">
+            <span class="cat-label">Browse by</span>
+            <button class="cat-btn active" data-cat="all">All Selections</button>
+            <button class="cat-btn" data-cat="starters">Starters</button>
+            <button class="cat-btn" data-cat="mains">Main Courses</button>
+            <button class="cat-btn" data-cat="desserts">Desserts</button>
+            <button class="cat-btn" data-cat="drinks">Beverages</button>
+        </aside>
+        <div>
+            <div class="menu-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="menuSearchInput" placeholder="Search by name, ingredient, or description...">
+                <button class="menu-search-clear" id="menuSearchClear" onclick="clearSearch()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="search-results-count" id="searchResultsCount" style="display:none"></div>
+            <div class="menu-list" id="menuList"></div>
+        </div>
+    </div>
+</main>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <h2><i class="fa-solid fa-bag-shopping"></i> Your Selection</h2>
+        <button class="icon-btn close-cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+        <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+        <button class="checkout-btn" id="checkoutBtn">Order via WhatsApp</button>
+    </div>
+</aside>
+
+<!-- SIZE SELECTION MODAL -->
+<div class="size-modal-overlay" id="sizeModalOverlay" onclick="if(event.target===this)closeSizeModal()">
+    <div class="size-modal">
+        <div class="size-modal-header">
+            <h3 id="sizeModalTitle">Select Size</h3>
+            <button class="size-modal-close" onclick="closeSizeModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="size-modal-body" id="sizeModalBody"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo">The Golden Plate</div>
+    <div class="footer-tagline">Crafted for the discerning palate.</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a><a href="menu.html">Menu</a>
+        <a href="about.html">Our Story</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="socials" id="footerSocials"></div>
+    <p class="copy">&copy; <span class="year"></span> The Golden Plate. All rights reserved.</p>
+</footer>
+
+<script src="gp-data.js"></script>
+<script src="main.js"></script>
+<script src="menu.js"></script>
+
+</body>
+</html>

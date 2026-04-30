@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | The Golden Plate</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+    <div class="login-box">
+        <div class="login-logo">
+            <span class="logo-icon"><i class="fa-solid fa-utensils"></i></span>
+            <span class="logo-text">Golden<em>Admin</em></span>
+        </div>
+        <p class="login-subtitle">Sign in to your dashboard</p>
+        <div class="login-form">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="loginUser" placeholder="Enter username" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="loginPass" placeholder="Enter password">
+            </div>
+            <div class="login-error" id="loginError"></div>
+            <button class="gold-btn login-submit" onclick="attemptLogin()"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <span class="logo-icon"><i class="fa-solid fa-utensils"></i></span>
+        <span class="logo-text">Golden<em>Admin</em></span>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <a href="#" class="nav-item active" data-page="dashboard">
+            <i class="fa-solid fa-chart-pie"></i><span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="orders">
+            <i class="fa-solid fa-bag-shopping"></i><span>Orders</span>
+            <span class="nav-badge" id="ordersBadge">3</span>
+        </a>
+        <a href="#" class="nav-item" data-page="menu">
+            <i class="fa-solid fa-book-open"></i><span>Menu Items</span>
+        </a>
+        <a href="#" class="nav-item" data-page="reservations">
+            <i class="fa-solid fa-calendar-check"></i><span>Reservations</span>
+        </a>
+        <div class="nav-section-label" style="margin-top:1.5rem">Content</div>
+        <a href="#" class="nav-item" data-page="images">
+            <i class="fa-solid fa-images"></i><span>Site Images</span>
+        </a>
+        <a href="#" class="nav-item" data-page="hero">
+            <i class="fa-solid fa-image"></i><span>Hero Section</span>
+        </a>
+        <a href="#" class="nav-item" data-page="about">
+            <i class="fa-solid fa-star"></i><span>About / Story</span>
+        </a>
+        <a href="#" class="nav-item" data-page="contact">
+            <i class="fa-solid fa-location-dot"></i><span>Contact Info</span>
+        </a>
+        <div class="nav-section-label" style="margin-top:1.5rem">Settings</div>
+        <a href="#" class="nav-item" data-page="settings">
+            <i class="fa-solid fa-gear"></i><span>Site Settings</span>
+        </a>
+        <a href="#" class="nav-item" data-page="reviews">
+            <i class="fa-solid fa-star"></i><span>Reviews</span>
+            <span class="nav-badge" id="reviewsBadge" style="display:none">0</span>
+        </a>
+        <a href="#" class="nav-item" data-page="account">
+            <i class="fa-solid fa-user-shield"></i><span>Account</span>
+        </a>
+    </nav>
+    <div class="sidebar-footer">
+        <div class="admin-avatar" id="adminAvatar">A</div>
+        <div>
+            <div class="admin-name" id="adminName">Admin</div>
+            <div class="admin-role">Super Admin</div>
+        </div>
+        <a href="index.html" target="_blank" class="view-site-btn" title="View Site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </div>
+</aside>
+
+<!-- Mobile Toggle -->
+<button class="mobile-sidebar-toggle" id="mobileSidebarToggle"><i class="fa-solid fa-bars"></i></button>
+
+<!-- Main Content -->
+<div class="main-wrap" id="mainWrap">
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button class="topbar-menu-btn" id="topbarMenuBtn"><i class="fa-solid fa-bars"></i></button>
+            <h1 class="page-title" id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+            <div class="topbar-clock" id="clock"></div>
+            <button class="topbar-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notif-dot"></span></button>
+        </div>
+    </header>
+
+    <!-- Pages -->
+    <div class="page-content" id="pageContent">
+
+        <!-- ===== DASHBOARD PAGE ===== -->
+        <section class="page active" id="page-dashboard">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <div class="stat-info"><span class="stat-num" id="statOrders">127</span><span class="stat-label">Total Orders</span></div>
+                    <div class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                    <div class="stat-info"><span class="stat-num" id="statRevenue">$8,430</span><span class="stat-label">Revenue Today</span></div>
+                    <div class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +8%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="stat-info"><span class="stat-num">14</span><span class="stat-label">Reservations</span></div>
+                    <div class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="stat-info"><span class="stat-num">4.9</span><span class="stat-label">Avg Rating</span></div>
+                    <div class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +0.1</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Recent Orders -->
+                <div class="dash-panel">
+                    <div class="panel-header">
+                        <h3>Recent Orders</h3>
+                        <button class="panel-btn" onclick="goToPage('orders')">View All</button>
+                    </div>
+                    <table class="data-table">
+                        <thead><tr><th>#</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+                        <tbody id="recentOrdersTable"></tbody>
+                    </table>
+                </div>
+                <!-- Top Items -->
+                <div class="dash-panel">
+                    <div class="panel-header"><h3>Top Selling Items</h3></div>
+                    <div class="top-items" id="topItems"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ORDERS PAGE ===== -->
+        <section class="page" id="page-orders">
+            <div class="panel-header" style="margin-bottom:1.5rem">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="new">New</button>
+                    <button class="filter-tab" data-filter="preparing">Preparing</button>
+                    <button class="filter-tab" data-filter="done">Done</button>
+                </div>
+                <button class="gold-btn" onclick="exportOrders()"><i class="fa-solid fa-download"></i> Export</button>
+            </div>
+            <div class="dash-panel">
+                <table class="data-table full">
+                    <thead><tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Time</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody id="ordersTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== MENU PAGE ===== -->
+        <section class="page" id="page-menu">
+            <div class="panel-header" style="margin-bottom:1.5rem">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="starters">Starters</button>
+                    <button class="filter-tab" data-filter="mains">Mains</button>
+                    <button class="filter-tab" data-filter="desserts">Desserts</button>
+                    <button class="filter-tab" data-filter="drinks">Drinks</button>
+                </div>
+                <button class="gold-btn" onclick="openAddItemModal()"><i class="fa-solid fa-plus"></i> Add Item</button>
+            </div>
+            <div class="menu-admin-grid" id="menuAdminGrid"></div>
+        </section>
+
+        <!-- ===== RESERVATIONS PAGE ===== -->
+        <section class="page" id="page-reservations">
+            <div class="panel-header" style="margin-bottom:1.5rem">
+                <h3 style="color:#ccc;font-family:'Playfair Display',serif">Upcoming Reservations</h3>
+                <button class="gold-btn" onclick="openAddReservationModal()"><i class="fa-solid fa-plus"></i> Add Reservation</button>
+            </div>
+            <div class="dash-panel">
+                <table class="data-table full">
+                    <thead><tr><th>Guest</th><th>Date</th><th>Time</th><th>Guests</th><th>Table</th><th>Notes</th><th>Actions</th></tr></thead>
+                    <tbody id="reservationsTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== IMAGES PAGE ===== -->
+        <section class="page" id="page-images">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-images"></i> Site Images Management</div>
+                <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem">Upload and manage images that appear across the website. Click on any image to change it.</p>
+
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-crown"></i> Hero Background</div>
+                <div class="image-manager-grid">
+                    <div class="image-manager-card" id="img-hero-bg-card">
+                        <div class="imc-preview">
+                            <img id="img-hero-bg-preview" src="" alt="Hero Background" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-hero-bg-placeholder"><i class="fa-solid fa-image"></i><span>No image</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Hero Section Background</strong>
+                            <span>Main page hero image</span>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('hero-bg')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                </div>
+
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-utensils"></i> Menu Items</div>
+                <p style="color:var(--muted);font-size:0.8rem;margin-bottom:1rem">Manage individual menu item images from the <a href="#" onclick="goToPage('menu');return false" style="color:var(--gold)">Menu Items</a> section by editing each item.</p>
+
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-building"></i> About Page Images</div>
+                <div class="image-manager-grid">
+                    <div class="image-manager-card" id="img-about-story-card">
+                        <div class="imc-preview">
+                            <img id="img-about-story-preview" src="" alt="About Story Image" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-about-story-placeholder"><i class="fa-solid fa-image"></i><span>No image</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>About Story Image</strong>
+                            <span>Image shown on About page</span>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('about-story')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                    <div class="image-manager-card" id="img-about-chef-card">
+                        <div class="imc-preview">
+                            <img id="img-about-chef-preview" src="" alt="Chef Image" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-about-chef-placeholder"><i class="fa-solid fa-image"></i><span>No image</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Head Chef Photo</strong>
+                            <span>Chef profile image on About page</span>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('about-chef')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                </div>
+
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-star"></i> Testimonial Images</div>
+                <div class="image-manager-grid">
+                    <div class="image-manager-card" id="img-testimonial-1-card">
+                        <div class="imc-preview">
+                            <img id="img-testimonial-1-preview" src="" alt="Testimonial 1" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-testimonial-1-placeholder"><i class="fa-solid fa-user"></i><span>Avatar 1</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Testimonial Avatar 1</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('testimonial-1')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                    <div class="image-manager-card" id="img-testimonial-2-card">
+                        <div class="imc-preview">
+                            <img id="img-testimonial-2-preview" src="" alt="Testimonial 2" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-testimonial-2-placeholder"><i class="fa-solid fa-user"></i><span>Avatar 2</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Testimonial Avatar 2</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('testimonial-2')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                    <div class="image-manager-card" id="img-testimonial-3-card">
+                        <div class="imc-preview">
+                            <img id="img-testimonial-3-preview" src="" alt="Testimonial 3" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-testimonial-3-placeholder"><i class="fa-solid fa-user"></i><span>Avatar 3</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Testimonial Avatar 3</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('testimonial-3')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                </div>
+
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-hashtag"></i> Gallery / Social Proof</div>
+                <div class="image-manager-grid">
+                    <div class="image-manager-card" id="img-gallery-1-card">
+                        <div class="imc-preview">
+                            <img id="img-gallery-1-preview" src="" alt="Gallery 1" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-gallery-1-placeholder"><i class="fa-solid fa-image"></i><span>Gallery 1</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Gallery Image 1</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('gallery-1')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                    <div class="image-manager-card" id="img-gallery-2-card">
+                        <div class="imc-preview">
+                            <img id="img-gallery-2-preview" src="" alt="Gallery 2" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-gallery-2-placeholder"><i class="fa-solid fa-image"></i><span>Gallery 2</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Gallery Image 2</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('gallery-2')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                    <div class="image-manager-card" id="img-gallery-3-card">
+                        <div class="imc-preview">
+                            <img id="img-gallery-3-preview" src="" alt="Gallery 3" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-gallery-3-placeholder"><i class="fa-solid fa-image"></i><span>Gallery 3</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Gallery Image 3</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('gallery-3')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                    <div class="image-manager-card" id="img-gallery-4-card">
+                        <div class="imc-preview">
+                            <img id="img-gallery-4-preview" src="" alt="Gallery 4" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-gallery-4-placeholder"><i class="fa-solid fa-image"></i><span>Gallery 4</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Gallery Image 4</strong>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('gallery-4')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                </div>
+
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-envelope"></i> Contact Page</div>
+                <div class="image-manager-grid">
+                    <div class="image-manager-card" id="img-contact-hero-card">
+                        <div class="imc-preview">
+                            <img id="img-contact-hero-preview" src="" alt="Contact Hero" onerror="this.style.display='none'">
+                            <div class="imc-placeholder" id="img-contact-hero-placeholder"><i class="fa-solid fa-image"></i><span>No image</span></div>
+                        </div>
+                        <div class="imc-info">
+                            <strong>Contact Page Background</strong>
+                            <span>Contact page hero/banner image</span>
+                        </div>
+                        <button class="gold-btn imc-btn" onclick="changeSiteImage('contact-hero')"><i class="fa-solid fa-upload"></i> Change</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HERO PAGE ===== -->
+        <section class="page" id="page-hero">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-image"></i> Hero Section Content</div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Main Heading</label>
+                        <input type="text" id="heroHeading" value="Where Flavor Meets Elegance">
+                    </div>
+                    <div class="form-group full">
+                        <label>Highlighted Word (Gold)</label>
+                        <input type="text" id="heroHighlight" value="Flavor">
+                    </div>
+                    <div class="form-group full">
+                        <label>Subheading / Description</label>
+                        <textarea id="heroDesc" rows="3">An exquisite culinary journey crafted with passion, precision, and the finest ingredients. Taste the artistry in every bite.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Button Text</label>
+                        <input type="text" id="heroBtnText" value="Explore the Menu">
+                    </div>
+                    <div class="form-group">
+                        <label>Button Link</label>
+                        <input type="text" id="heroBtnLink" value="menu.html">
+                    </div>
+                </div>
+                <div class="preview-box">
+                    <div class="preview-label">Live Preview</div>
+                    <div class="hero-preview" id="heroPreview">
+                        <h2>Where <span>Flavor</span> Meets Elegance</h2>
+                        <p>An exquisite culinary journey crafted with passion, precision, and the finest ingredients.</p>
+                        <button>Explore the Menu</button>
+                    </div>
+                </div>
+                <button class="gold-btn" style="margin-top:1.5rem" onclick="saveHero()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT PAGE ===== -->
+        <section class="page" id="page-about">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-star"></i> About / Story Content</div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Page Title</label>
+                        <input type="text" id="aboutTitle" value="A Legacy of Flavor, Crafted with Soul">
+                    </div>
+                    <div class="form-group full">
+                        <label>Main Story Paragraph</label>
+                        <textarea id="aboutStory" rows="4">Founded in 2018, The Golden Plate was born from a simple belief: dining should be an experience, not just a meal. What began as a modest kitchen driven by a relentless pursuit of authentic flavors has evolved into a space where artistry and hospitality intertwine.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Founded Year</label>
+                        <input type="text" id="aboutYear" value="2018">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Guests (K)</label>
+                        <input type="number" id="aboutGuests" value="14">
+                    </div>
+                    <div class="form-group">
+                        <label>Awards Count</label>
+                        <input type="number" id="aboutAwards" value="3">
+                    </div>
+                    <div class="form-group">
+                        <label>Satisfaction %</label>
+                        <input type="number" id="aboutSatisfaction" value="98">
+                    </div>
+                </div>
+                <div class="about-team-editor">
+                    <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-users"></i> Team Members</div>
+                    <div id="teamList"></div>
+                    <button class="ghost-btn" onclick="addTeamMember()" style="margin-top:1rem"><i class="fa-solid fa-plus"></i> Add Team Member</button>
+                </div>
+                <button class="gold-btn" style="margin-top:1.5rem" onclick="saveAbout()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT PAGE ===== -->
+        <section class="page" id="page-contact">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-location-dot"></i> Contact Information</div>
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Restaurant Address</label>
+                        <input type="text" id="contactAddress" value="123 Golden Avenue, Luxury District, New York, NY 10001">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" id="contactPhone" value="+1 (212) 555-0199">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="contactEmail" value="reservations@goldenplate.com">
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp Number (with country code)</label>
+                        <input type="text" id="contactWhatsapp" value="1234567890">
+                    </div>
+                    <div class="form-group">
+                        <label>Opening Hours (Weekdays)</label>
+                        <input type="text" id="contactHoursWeek" value="Mon–Fri: 12:00 PM – 11:00 PM">
+                    </div>
+                    <div class="form-group">
+                        <label>Opening Hours (Weekend)</label>
+                        <input type="text" id="contactHoursWeekend" value="Sat–Sun: 11:00 AM – 12:00 AM">
+                    </div>
+                    <div class="form-group full">
+                        <label>Google Maps Embed URL</label>
+                        <input type="text" id="contactMap" value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304603!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1734567890123">
+                    </div>
+                    <div class="form-group full">
+                        <div class="settings-panel-header" style="margin-bottom:1rem"><i class="fa-solid fa-share-nodes"></i> Social Links</div>
+                        <p style="color:var(--muted);font-size:0.78rem;margin-bottom:0.8rem">Add your social media URLs. Icons are detected automatically.</p>
+                        <div id="socialLinksEditor"></div>
+                        <button class="ghost-btn" onclick="addSocialLink()" style="margin-top:0.8rem"><i class="fa-solid fa-plus"></i> Add Link</button>
+                    </div>
+                </div>
+                <button class="gold-btn" style="margin-top:1.5rem" onclick="saveContact()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+            </div>
+        </section>
+
+        <!-- ===== SETTINGS PAGE ===== -->
+        <section class="page" id="page-settings">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-gear"></i> General Settings</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Restaurant Name</label>
+                        <input type="text" id="siteName" value="The Golden Plate">
+                    </div>
+                    <div class="form-group">
+                        <label>Tagline</label>
+                        <input type="text" id="siteTagline" value="Crafted for the discerning palate.">
+                    </div>
+                    <div class="form-group">
+                        <label>Currency Symbol</label>
+                        <input type="text" id="siteCurrency" value="$" style="max-width:80px">
+                    </div>
+                    <div class="form-group">
+                        <label>Primary Accent Color</label>
+                        <input type="color" id="siteGold" value="#FFFFFF" style="height:44px;padding:4px;cursor:pointer">
+                    </div>
+                </div>
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-toggle-on"></i> Features</div>
+                <div class="toggle-list">
+                    <div class="toggle-row">
+                        <div><strong>Online Ordering</strong><p>Allow customers to add items to cart</p></div>
+                        <label class="toggle"><input type="checkbox" checked id="toggleOrdering"><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="toggle-row">
+                        <div><strong>Reservations</strong><p>Show reservation form on contact page</p></div>
+                        <label class="toggle"><input type="checkbox" checked id="toggleReservations"><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="toggle-row">
+                        <div><strong>WhatsApp Checkout</strong><p>Send orders via WhatsApp</p></div>
+                        <label class="toggle"><input type="checkbox" checked id="toggleWhatsapp"><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="toggle-row">
+                        <div><strong>Maintenance Mode</strong><p>Show coming soon page to visitors</p></div>
+                        <label class="toggle"><input type="checkbox" id="toggleMaintenance"><span class="toggle-slider"></span></label>
+                    </div>
+                </div>
+                <button class="gold-btn" style="margin-top:1.5rem" onclick="saveSettings()"><i class="fa-solid fa-floppy-disk"></i> Save Settings</button>
+            </div>
+        </section>
+
+        <!-- ===== REVIEWS PAGE ===== -->
+        <section class="page" id="page-reviews">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-star"></i> Reviews Moderation</div>
+                <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem">Customer reviews appear here after submission. Approve or reject each review before it shows on the website.</p>
+
+                <div class="filter-tabs" style="margin-bottom:1.5rem">
+                    <button class="filter-tab active" data-review-filter="pending">Pending</button>
+                    <button class="filter-tab" data-review-filter="approved">Approved</button>
+                    <button class="filter-tab" data-review-filter="rejected">Rejected</button>
+                </div>
+
+                <div id="reviewsList"></div>
+                <div style="margin-top:1rem;display:flex;gap:0.5rem">
+                    <button class="gold-btn" onclick="approveAllPending()"><i class="fa-solid fa-check-double"></i> Approve All Pending</button>
+                    <button class="danger-btn" onclick="rejectAllPending()" style="padding:0.55rem 1.2rem;font-size:0.82rem"><i class="fa-solid fa-xmark"></i> Reject All Pending</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACCOUNT PAGE ===== -->
+        <section class="page" id="page-account">
+            <div class="settings-panel">
+                <div class="settings-panel-header"><i class="fa-solid fa-user-shield"></i> Account & Security</div>
+                <div class="form-grid" style="max-width:600px">
+                    <div class="form-group full">
+                        <label>Current Username</label>
+                        <input type="text" id="currentUsername" readonly style="opacity:0.5;cursor:not-allowed">
+                    </div>
+                    <div class="form-group">
+                        <label>New Username</label>
+                        <input type="text" id="newUsername" placeholder="Enter new username">
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                    </div>
+                    <div class="form-group full">
+                        <label>Current Password (required to save changes)</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password">
+                    </div>
+                </div>
+                <button class="gold-btn" onclick="saveAccount()"><i class="fa-solid fa-floppy-disk"></i> Update Credentials</button>
+                <div class="settings-panel-header" style="margin-top:2rem"><i class="fa-solid fa-shield-halved"></i> Session</div>
+                <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">You can sign out and sign back in with your new credentials.</p>
+                <button class="danger-btn" onclick="signOut()" style="padding:0.6rem 1.4rem;font-size:0.85rem"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+            </div>
+        </section>
+
+    </div><!-- end pageContent -->
+</div><!-- end main-wrap -->
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalBox">
+        <div class="modal-header">
+            <h3 id="modalTitle">Add Menu Item</h3>
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="gp-data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
