@@ -5,10 +5,10 @@
     --bg-dark: #050505;
     --surface: #0c0c0c;
     --card-bg: #111111;
-    --gold: #E0E0E0;
-    --gold-light: #FFFFFF;
-    --gold-dark: #B0B0B0;
-    --text: #F0F0F0;
+    --gold: #B89428;
+    --gold-light: #B89428;
+    --gold-dark: #B89428;
+    --text: #B89428;
     --text-muted: #777777;
     --border: #1a1a1a;
     --glass: rgba(5,5,5,0.92);
@@ -17,14 +17,14 @@
     --radius: 16px;
     --nav-height: 72px;
     --tr: 0.42s cubic-bezier(0.22,1,0.36,1);
-    --btn-bg: #ffffff;
+    --btn-bg: #B89428;
     --btn-text: #000000;
-    --btn-hover: #e0e0e0;
+    --btn-hover: #B89428;
     --input-bg: #111111;
-    --nav-link: #888888;
+    --nav-link: #F0F0F0;
     --card-border: #1a1a1a;
     --badge-bg: rgba(255,255,255,0.08);
-    --badge-text: #ccc;
+    --badge-text: #B89428;
     --gold-glow: rgba(255,255,255,0.05);
 }
 

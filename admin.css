@@ -21,34 +21,13 @@
     --input-bg: #141414;
     --table-hover: rgba(255,255,255,0.015);
     --modal-bg: rgba(0,0,0,0.75);
-    --overlay-text: #BBBBBB;
+    --overlay-text: #B89428;
     --sidebar-bg: #0E0E0E;
     --btn-bg: #D4AF37;
     --btn-text: #000;
-    --btn-hover: #e0e0e0;
+    --btn-hover: #B89428;
 }
-body.light {
-    --bg: #F8F8F6;
-    --surface: #FFFFFF;
-    --card: #FDFDFC;
-    --card2: #F3F3F1;
-    --gold: #2A2A2A;
-    --gold-light: #1A1A1A;
-    --gold-dark: #666666;
-    --gold-glow: rgba(0,0,0,0.035);
-    --text: #1A1A1A;
-    --muted: #9A9A9A;
-    --border: #EAEAE6;
-    --border2: #DDD9D4;
-    --input-bg: #FDFDFC;
-    --table-hover: rgba(0,0,0,0.012);
-    --modal-bg: rgba(0,0,0,0.30);
-    --overlay-text: #5A5A5A;
-    --sidebar-bg: #FFFFFF;
-    --btn-bg: #1A1A1A;
-    --btn-text: #FFFFFF;
-    --btn-hover: #333333;
-}
+
 
 /* ===== RESET ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
