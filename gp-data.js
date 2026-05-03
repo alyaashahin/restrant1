@@ -21,7 +21,7 @@ const GP = {
         },
         contact: {
             address: "123 Golden Avenue, Luxury District, New York, NY 10001",
-            phone: "+1 (212) 555-0199",
+            phone: "+01090994182",
             email: "reservations@goldenplate.com",
             whatsapp: "+01090994182",
             hoursWeek: "Mon–Fri: 12:00 PM – 11:00 PM",
